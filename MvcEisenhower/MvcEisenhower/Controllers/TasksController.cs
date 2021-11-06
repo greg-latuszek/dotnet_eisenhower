@@ -54,7 +54,7 @@ namespace MvcEisenhower.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Important,Urgent")] Task task)
+        public async Task<IActionResult> Create([Bind("Id,Name,Important,Urgent")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MvcEisenhower.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Important,Urgent")] Task task)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Important,Urgent")] Models.Task task)
         {
             if (id != task.Id)
             {
