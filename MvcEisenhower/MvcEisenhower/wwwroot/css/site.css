@@ -24,6 +24,48 @@ a {
   border-color: #1861ac;
 }
 
+
+/* Eisenhower Matrix styles
+-------------------------------------------------- */
+.eisenhowermatrix {
+    height: 100%;
+    display: grid;
+    background-color: darkgray;
+    grid-template-columns: 10em auto auto;
+    grid-template-areas:
+        "none                 urgent_header        noturgent_header"
+        "important_header     urgent_important     noturgent_important"
+        "notimportant_header  urgent_notimportant  noturgent_notimportant";
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-rows: auto 1fr 1fr;
+}
+
+.em_header {
+    text-align: center;
+}
+
+#em_urgent_important {
+    grid-area: urgent_important;
+    background-color: orangered;
+}
+
+#em_noturgent_important {
+    grid-area: noturgent_important;
+    background-color: greenyellow;
+}
+
+#em_urgent_notimportant {
+    grid-area: urgent_notimportant;
+    background-color: yellow;
+}
+
+#em_noturgent_notimportant {
+    grid-area: noturgent_notimportant;
+    background-color: darkslategray;
+    color: white;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -59,9 +101,18 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+body > .container {
+    flex-grow: 20;
+    background-color: aqua;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

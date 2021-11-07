@@ -4,44 +4,74 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Task</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Important)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Urgent)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Important)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Urgent)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="eisenhowermatrix">
+    <div style="grid-area: none"></div>
+    <div class="em_header" style="grid-area: urgent_header">Urgent</div>
+    <div class="em_header" style="grid-area: noturgent_header">Not Urgent</div>
+    <div class="em_header" style="grid-area: important_header">Important</div>
+    <div id="em_urgent_important">
+        <ol type="1">
+            @foreach (var item in Model)
+            {
+                @if (item.Important && item.Urgent)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </li>
+                }
+            }
+        </ol>
+    </div>
+    <div id="em_noturgent_important">
+        <ol type="1">
+            @foreach (var item in Model)
+            {
+                @if (item.Important && !item.Urgent)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </li>
+                }
+            }
+        </ol>
+    </div>
+    <div class="em_header" style="grid-area: notimportant_header">Not Important</div>
+    <div id="em_urgent_notimportant">
+        <ol type="1">
+            @foreach (var item in Model)
+            {
+                @if (!item.Important && item.Urgent)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </li>
+                }
+            }
+        </ol>
+    </div>
+    <div id="em_noturgent_notimportant">
+        <ol type="1">
+            @foreach (var item in Model)
+            {
+                @if (!item.Important && !item.Urgent)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </li>
+                }
+            }
+        </ol>
+    </div>
+</div>
