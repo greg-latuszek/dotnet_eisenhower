@@ -12,7 +12,7 @@ namespace MvcEisenhower.Models
         public Boolean Important { get; set; }
 
         public Boolean Urgent { get; set; }
-        public int UserID { get; set; }  // Foreign Key
+        public int? UserID { get; set; }  // Foreign Key
         public User User { get; set; }  // navigation property
 
         public Task()
