@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,7 @@ namespace MvcEisenhower.Controllers
         }
 
         // GET: Users/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,6 +54,7 @@ namespace MvcEisenhower.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserID,Login,LastName,FirstName")] User user)
@@ -66,6 +69,7 @@ namespace MvcEisenhower.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,6 +88,7 @@ namespace MvcEisenhower.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserID,Login,LastName,FirstName")] User user)
@@ -117,6 +122,7 @@ namespace MvcEisenhower.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +141,7 @@ namespace MvcEisenhower.Controllers
         }
 
         // POST: Users/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
