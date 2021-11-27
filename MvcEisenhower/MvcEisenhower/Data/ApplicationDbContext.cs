@@ -14,5 +14,6 @@ namespace MvcEisenhower.Data
         {
         }
         public DbSet<MvcEisenhower.Models.Task> Task { get; set; }
+        public DbSet<MvcEisenhower.Models.User> User { get; set; }
     }
 }
