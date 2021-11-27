@@ -4,7 +4,7 @@ namespace MvcEisenhower.Models
 {
 	public class Task
 	{
-        public int Id { get; set; }
+        public int TaskID { get; set; }  // ID or clasnameID is interpreted by EF as primary key
 
         public string Name { get; set; }
 

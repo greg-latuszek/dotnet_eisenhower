@@ -35,7 +35,7 @@ namespace MvcEisenhower.Controllers
             }
 
             var task = await _context.Task
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.TaskID == id);
             if (task == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace MvcEisenhower.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Important,Urgent")] Models.Task task)
         {
-            if (id != task.Id)
+            if (id != task.TaskID)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace MvcEisenhower.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TaskExists(task.Id))
+                    if (!TaskExists(task.TaskID))
                     {
                         return NotFound();
                     }
@@ -131,7 +131,7 @@ namespace MvcEisenhower.Controllers
             }
 
             var task = await _context.Task
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.TaskID == id);
             if (task == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace MvcEisenhower.Controllers
 
         private bool TaskExists(int id)
         {
-            return _context.Task.Any(e => e.Id == id);
+            return _context.Task.Any(e => e.TaskID == id);
         }
     }
 }
