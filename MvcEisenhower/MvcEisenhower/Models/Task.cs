@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MvcEisenhower.Models
 {
@@ -17,4 +18,14 @@ namespace MvcEisenhower.Models
 
 		}
 	}
+
+    public class User
+    {
+        public int UserID { get; set; }
+        public string Login { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+
+        public ICollection<Task> Tasks { get; set; }
+    }
 }
